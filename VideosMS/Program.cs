@@ -1,5 +1,12 @@
+using MassTransit;
+using VideosMS.src.Mappings;
+using VideosMS.src.Repositories;
+using VideosMS.src.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGrpc();
+builder.Services.AddAutoMapper(typeof(Mapper));
+builder.Services.AddSingleton<VideoRepository>();
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumers(typeof(Program).Assembly);
@@ -13,10 +20,12 @@ builder.Services.AddMassTransit(x =>
         });
 
         cfg.ConfigureEndpoints(ctx);
+        
     });
 });
 var app = builder.Build();
-
+app.MapGrpcService<VideoGrpcService>();
+app.MapControllers();
 app.UseHttpsRedirection();
 
 app.Run();

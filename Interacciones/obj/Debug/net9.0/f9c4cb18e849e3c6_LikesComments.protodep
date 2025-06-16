@@ -1,0 +1,2 @@
+obj\Debug\net9.0\src\Protos/LikesComments.cs \
+obj\Debug\net9.0\src\Protos/LikesCommentsGrpc.cs: src/Protos/LikesComments.proto

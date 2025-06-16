@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "SocialService.Grpc";
+
+package LikesComments;
+
+message LikesRequest 
+{
+    int32 id = 1;
+}
+
+message LikesReply 
+{
+    int32 likes=1;
+}
+
+message LikesCommentsRequest 
+{
+    int32 videoId = 1;
+    int32 userId = 2;
+    repeated CommentResponse = 3;
+}
+
+message CommentResponse
+{
+    string comentario=1;
+}
+
+message LikesCommentsResponse
+{
+    int32 likes=1;
+    
+}
+
+service ItemService 
+{
+    rpc GetLikes(LikesRequest) returns (LikesReply);
+    rpc GetLikesandComments(LikesCommentsRequest) returns (LikesCommentsResponse);
+}

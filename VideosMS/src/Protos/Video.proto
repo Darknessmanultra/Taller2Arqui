@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "Video";
+option csharp_namespace = "Video.Grpc";
 
 service VideoService 
 {
@@ -36,7 +36,6 @@ message VideoResponse
     string titulo=2;
     string descripcion=3;
     string genero=4;
-    int32 cantlikes=5;
 }
 
 message VideoListResponse
